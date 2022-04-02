@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+from setuptools import setup
 
 setup(name='dynamixel_hr',
       version='0.1',
@@ -10,7 +10,7 @@ setup(name='dynamixel_hr',
       url='www.humarobotics.com',
       packages=['dxl'],
       install_requires=[
-          'Tkinter',
+          'future',
           'pyserial',
       ],
      )
