@@ -9,6 +9,7 @@ setup(name='dynamixel_hr3',
     author_email='pc@humarobotics.com',
     url='www.humarobotics.com',
     packages=['dxl'],
+    setup_requires=['wheel'],
     install_requires=[
         'future',
         'pyserial',
