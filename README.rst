@@ -68,16 +68,6 @@ It provides the following features:
    The Python window can be used for direct programming of the motors using the provided API. The python context is already prepared so you don't need to import or instantiante anything, making the code minimal. 
 
 
-
-Download
-=======
-Download at:
-https://github.com/jestemc/dynamixel_hr3
-
-Or clone the repository:
-git clone https://github.com/jestemc/dynamixel_hr3.git
-
-
 Installation
 ============
 
@@ -96,7 +86,7 @@ Create a virtualenv and activate it::
 
 Install the library by running::
 
-    python setup.py install
+    pip install git+https://github.com/jestemc/dynamixel_hr3.git
 
 
 Ubuntu
@@ -108,7 +98,7 @@ Create a virtualenv and activate it::
 
 Install the library by running::
 
-    python setup.py install
+    pip install git+https://github.com/jestemc/dynamixel_hr3.git
 
 Access to the serial device (/tty/USB0 by default) needs special rights, so you'll need either to sudo or add your user to the dialout group::
 
