@@ -1,0 +1,3 @@
+[console_scripts]
+dxlab = dxl.ToolDynamixelLab:dynamixel_lab
+
