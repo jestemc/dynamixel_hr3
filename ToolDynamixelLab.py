@@ -8,11 +8,17 @@ import json
 from string import *
 from threading import Thread
 
-from tkinter import *
-import tkMessageBox
-import tkSimpleDialog
-import tkFileDialog
 
+# Python 2 imports
+# import tkMessageBox
+# import tkSimpleDialog
+# import tkFileDialog
+
+import tkinter
+from tkinter import messagebox, simpledialog, filedialog
+tkMessageBox = messagebox
+tkSimpleDialog = simpledialog
+tkFileDialog = filedialog
 
 from serial import SerialException
 
