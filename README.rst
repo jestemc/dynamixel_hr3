@@ -1,7 +1,8 @@
-HumaRobotics Dynamixel Library
+HumaRobotics Dynamixel Library (Fork for python 3)
 ########################################################
 
-HumaRobotics Dynamixel Library is a Python 2.7 library for programming Robotis Dynamixel motors directly from python or through the ROS bindings provided separately in https://github.com/HumaRobotics/dynamixel_hr_ros .
+HumaRobotics Dynamixel is a library for programming Robotis Dynamixel motors directly from python or through the ROS bindings provided separately in https://github.com/HumaRobotics/dynamixel_hr_ros .
+Originally for python 2, this is a fork that was (mostly) automatically converted to python 3 using the `future` library.
 It also comes with a GUI that allows to quickly identify/configure/manipulate your motors.
 
 .. toctree::
@@ -77,12 +78,11 @@ It provides the following features:
 
 Download
 =======
-You can obtain the latest sources using our Git repository:
-git clone git@github.com/HumaRobotics:dynamixel_hr
+Download at:
+https://github.com/jestemc/dynamixel_hr3
 
-You can also download the latest release as a compressed archive from:
-http://www.humarobotics.com/downloads/dynamixel_hr.zip
-
+Or clone the repository:
+git clone https://github.com/jestemc/dynamixel_hr3.git
 
 
 Installation
@@ -96,28 +96,31 @@ Setup drivers for USB2Dynamixel:
     * Follow instructions from http://support.robotis.com/en/software/dynamixel_sdk/usb2dynamixel/usb2dxl_windows.htm
     * Set USB: Port 21, max baudrate, delay 1
 
-Setup python and pyserial:
-    * Install Python 2.7 from http://www.python.org/ftp/python/2.7.6/python-2.7.6.msi
-    * Install pyserial from https://pypi.python.org/packages/any/p/pyserial/pyserial-2.7.win32.exe
+Create a virtualenv and activate it::
 
-If required you can install the library by running the following command from the dynamixel_hr folder::
+    python3 -m venv .venv
+    . .venv/bin/activate
+
+Install the library by running::
 
     python setup.py install
 
+
 Ubuntu
 ------
-Install python and pyserial::
+Create a virtualenv and activate it::
 
-    sudo apt-get install python2.7 python-serial
+    python3 -m venv .venv
+    . .venv/bin/activate
+
+Install the library by running::
+
+    python setup.py install
 
 Access to the serial device (/tty/USB0 by default) needs special rights, so you'll need either to sudo or add your user to the dialout group::
 
     sudo usermod -a -G dialout username
 
-If required you can install the library by running the following command from the dynamixel_hr folder::
-
-    sudo python setup.py install
-    
 
 Dynamixel Lab Usage
 =============
@@ -125,6 +128,7 @@ You can start the Dynamixel Lab by running::
 
     python ToolDynamixelLab.py
 
+Don't forget to activate the virtualenv first.
 
 
 Library
