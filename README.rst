@@ -119,7 +119,7 @@ Dynamixel Lab Usage
 =============
 You can start the Dynamixel Lab by running::
 
-    python ToolDynamixelLab.py
+    dxlab
 
 Don't forget to activate the virtualenv first.
 
