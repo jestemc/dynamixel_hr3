@@ -5,7 +5,6 @@
 # WINDOWS WARNING: For best performance, parameters of the COM Port should be set to maximum baud rate, and 1ms delay (Device Manager, COM Ports, properties, advanced)
 
 
-from future.utils import raise_
 from collections import OrderedDict
 import logging
 
@@ -58,7 +57,7 @@ class DxlElement(object):
     @classmethod
     def instantiateMotor(cls,id,model_number):
         if not model_number in cls.DxlModels.keys():
-            raise_(DxlConfigurationException,"Cannot instantiate non registered element model %d on ID %d"%(model_number,id))
+            raise DxlConfigurationException,"Cannot instantiate non registered element model %d on ID %d"%(model_number,id)
         mcls=cls.DxlModels[model_number]
         return mcls()
         
@@ -66,20 +65,20 @@ class DxlElement(object):
         
     def getRegisterCmd(self,name):
         if not name in self.registers.keys():
-            raise_(DxlConfigurationException,"Model %s has no register called %s"%(name,self.model_name))
+            raise DxlConfigurationException,"Model %s has no register called %s"%(name,self.model_name)
         r=self.registers[name]
         if not 'r' in r.mode:
-            raise_(DxlConfigurationException,"Register %s is not readable"%(name))
+            raise DxlConfigurationException,"Register %s is not readable"%(name)
         return (r.size,[Dxl.CMD_READ_DATA,r.address,r.size])
 
     def setRegisterCmd(self,name,value):
         if not name in self.registers.keys():
-            raise_(DxlConfigurationException,"Model %s has no register called %s"%(self.model_name,name))
+            raise DxlConfigurationException,"Model %s has no register called %s"%(self.model_name,name)
         r=self.registers[name]
         if not 'w' in r.mode:
-            raise_(DxlConfigurationException,"Register %s is not writable"%(name))
+            raise DxlConfigurationException,"Register %s is not writable"%(name)
         if r.size!=len(value):
-            raise_(DxlConfigurationException,"Model %s register %s has size %d: passed size %d"%(self.model_name,name,r.size,len(value)))
+            raise DxlConfigurationException,"Model %s register %s has size %d: passed size %d"%(self.model_name,name,r.size,len(value))
             
         return (0,[Dxl.CMD_WRITE_DATA,r.address]+value )
 

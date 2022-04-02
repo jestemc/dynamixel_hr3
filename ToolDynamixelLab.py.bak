@@ -8,7 +8,7 @@ import json
 from string import *
 from threading import Thread
 
-from tkinter import *
+from Tkinter import *
 import tkMessageBox
 import tkSimpleDialog
 import tkFileDialog
@@ -62,7 +62,7 @@ class Evaluator:
             #~ print k+" "+str(v)
         
         # Execute and retrieve return value
-        exec(self.cmd, context)
+        exec self.cmd in context
         return context["_return"]
     
     def buildContext(self):
@@ -146,7 +146,7 @@ chain.goto(id,100,speed=0) # Full speed back to pos 100
         try:
             toeval=self.textTask.get(1.0,END)
             self.evaluator.perform(toeval)
-        except Exception as e:
+        except Exception,e:
             tkMessageBox.showerror("Python Error",str(e))
             
         
@@ -569,7 +569,7 @@ class MainWindow:
         for rate in rates:            
             try:
                 self.open(rate)
-            except SerialException as e:
+            except SerialException,e:
                 tkMessageBox.showerror("Serial Error","Could not open serial port: \n"+str(e))
                 return
                 
@@ -584,10 +584,10 @@ class MainWindow:
                 if len(motors)>0:
                     selected_rate=rate
                 #~ chain.dump()
-            except dxlcore.DxlConfigurationException as e:
+            except dxlcore.DxlConfigurationException,e:
                 tkMessageBox.showerror("Configuration Error","Could not instantiate motor: \n"+str(e))
                 return
-            except dxlcore.DxlCommunicationException as e:
+            except dxlcore.DxlCommunicationException,e:
                 tkMessageBox.showerror("Communication Error","Could not communicate with motor (could be due to overlapping IDs, try on single motors): \n"+str(e))
                 return
             finally:
@@ -605,13 +605,13 @@ class MainWindow:
             txt=self.textConfig.get(1.0,END)
             try:
                 self.conf=json.loads(txt)
-            except Exception as e:
+            except Exception,e:
                 tkMessageBox.showerror("JSON Error","Could not parse JSON formatted configuration: \n"+str(e))
                 return
                 
             try:
                 self.chain.set_configuration(self.conf)
-            except Exception as e:
+            except Exception,e:
                 tkMessageBox.showerror("Configuration Error","Could not set Dynamixel configuration: \n"+str(e))
                 return
         else:
@@ -632,14 +632,14 @@ class MainWindow:
         self.baudRate.set(rate)
         try:
             self.open(rate)
-        except SerialException as e:
+        except SerialException,e:
             tkMessageBox.showerror("Serial Error","Could not open serial port: \n"+str(e))
             return
         try:            
             self.conf=self.chain.get_configuration(broadcast=self.doBroadcast.get())            
-        except dxlcore.DxlConfigurationException as e:            
+        except dxlcore.DxlConfigurationException,e:            
             tkMessageBox.showerror("Configuration Error","Could not instantiate motor: \n"+str(e))
-        except dxlcore.DxlCommunicationException as e:
+        except dxlcore.DxlCommunicationException,e:
             tkMessageBox.showerror("Communication Error","Could not communicate with motor (could be due to overlapping IDs, try on single motors): \n"+str(e))
             return
         

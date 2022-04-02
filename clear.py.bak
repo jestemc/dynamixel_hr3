@@ -1,4 +1,3 @@
-from __future__ import print_function
 from dxl.dxlchain import DxlChain
 from dxl.dxlcore import Dxl
 
@@ -13,12 +12,12 @@ rates.append(3000000)
     
 chain=DxlChain(port,rate=1000000,timeout=timeout)
 for rate in rates:
-    print("rate",rate)
+    print "rate",rate
     chain.reopen(port,rate,timeout=timeout)
     try:
         chain.factory_reset(Dxl.BROADCAST)
-    except Exception as e:
-        print(e)
+    except Exception,e:
+        print e
     chain.close()
 
 

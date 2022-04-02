@@ -9,4 +9,8 @@ setup(name='dynamixel_hr',
       author_email='pc@humarobotics.com',
       url='www.humarobotics.com',
       packages=['dxl'],
+      install_requires=[
+          'Tkinter',
+          'pyserial',
+      ],
      )
