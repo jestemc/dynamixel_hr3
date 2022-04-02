@@ -25,7 +25,7 @@ from serial import SerialException
 
 from dxl import *
 from dxl.dxlcore import *
-from python_text import *
+from dxl.python_text import *
 
 searchRates=[57142,3000000,1000000,9600]
 
@@ -701,17 +701,17 @@ class MainWindow:
         
 
 
+def dynamixel_lab():
+    root = Tk()
+    appname="DynamixelLab"
+    root.title(appname)
+    try:
+        root.iconbitmap(default="humarobotics.ico")
+    except:
+        logging.warning("Could not load icon")
+        
 
-root = Tk()
-appname="DynamixelLab"
-root.title(appname)
-try:
-    root.iconbitmap(default="humarobotics.ico")
-except:
-    logging.warning("Could not load icon")
-    
-
-mainwindow = MainWindow(root)
-root.protocol("WM_DELETE_WINDOW", mainwindow.exit)
-root.mainloop()
+    mainwindow = MainWindow(root)
+    root.protocol("WM_DELETE_WINDOW", mainwindow.exit)
+    root.mainloop()
 
