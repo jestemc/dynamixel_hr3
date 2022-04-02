@@ -10,7 +10,6 @@ setup(name='dynamixel_hr3',
     url='www.humarobotics.com',
     packages=['dxl'],
     install_requires=[
-        'wheel',
         'future',
         'pyserial',
     ],
