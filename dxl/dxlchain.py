@@ -94,7 +94,7 @@ class DxlChain:
         checksumed_data = [id, len(packet)+1] + packet
         
         data="".join(map(chr, [0xFF, 0xFF] + checksumed_data + [self.checksum(checksumed_data)]))
-        self.port.write(data)
+        self.port.write(data.encode())
         self.port.flushOutput()
 
     def recv(self):
