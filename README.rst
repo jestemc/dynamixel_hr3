@@ -84,5 +84,7 @@ Here is a typical code example:
     while chain.is_moving():
         print(chain.get_position())
 
+    chain.wait_stopped() # This instruction will wait until all motors have stopped moving
+
     # Disable the motors
     chain.disable()    
