@@ -44,7 +44,7 @@ Install the library by running::
 Access to the serial device (/tty/USB0 by default) needs special rights, so you'll need either to sudo or add your user to the dialout group::
 
     sudo chmod 666 /dev/ttyUSB0
-    sudo usermod -a -G dialout username
+    sudo usermod -a -G dialout <your-ubuntu-username>
 
 
 Dynamixel Lab Usage
